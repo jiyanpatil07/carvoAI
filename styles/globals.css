@@ -3,7 +3,20 @@
 @tailwind utilities;
 
 
+/* styles.module.css */
+.year-buttons {
+  background-color: white;
+}
 
+/* Apply background color only on larger screens */
+lg:bg-gray-100 {
+  background-color: white;
+}
+
+/* Additional styling for year buttons */
+.year-button {
+  /* Add any additional styling here */
+}
 /* 
 :root {
   --foreground-rgb: 0, 0, 0;

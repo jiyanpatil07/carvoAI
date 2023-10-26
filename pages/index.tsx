@@ -1,10 +1,12 @@
-import Image from "next/image";
-import { Alert } from "flowbite-react";
-import { useState } from "react";
-import { Navbar } from "flowbite-react";
+import React from "react";
 import { useRouter } from 'next/router';
 
-export async function getServerSideProps() {
+
+
+// Initially the entire api is being loaded on server by calling all the launches
+// after, that complete html being served completely resulting in minimum loading time.
+
+export async function getServerSideProps() { //Server Side Rendering
   const response = await fetch("https://api.spacexdata.com/v3/launches?limit=100");
   const launches = await response.json();
 
@@ -48,16 +50,18 @@ function Home({ launches }: { launches: any }) {
   const router = useRouter();
   const { query } = router;
 
-  const selectedYear = query.year as string | undefined;
+  const selectedYear = query.year || undefined;
   const successfulLaunch = query.launch === 'true' ? true : query.launch === 'false' ? false : undefined;
   const successfulLanding = query.landing === 'true' ? true : query.landing === 'false' ? false : undefined;
 
-  const handleYearFilter = (year: string) => {
+  const handleYearFilter = (year:any) => {
     const newQuery = { ...query, year };
     router.push({ pathname: '/', query: newQuery });
   };
 
-  const handleFilter = (key: string, value: boolean | undefined) => {
+
+  //here we are using react router for the url data handeling and showing what user is requesting from the server
+  const handleFilter = (key:any, value:any) => {
     const newQuery = { ...query };
     if (value === true) {
       newQuery[key] = 'true';
@@ -78,7 +82,7 @@ function Home({ launches }: { launches: any }) {
     router.push({ pathname: '/', query: newQuery });
   };
 
-  const filteredLaunches = launches.filter((launch: any) => {
+  const filteredLaunches = launches.filter((launch:any) => {
     // Filter by Launch Year
     const yearFilter = selectedYear ? launch.launch_year === selectedYear : true;
 
@@ -93,84 +97,102 @@ function Home({ launches }: { launches: any }) {
     return yearFilter && successfulLaunchFilter && successfulLandingFilter;
   });
 
+
+  // rather than giving statically all the buttons of year
+  // we have created a array 
   const years = Array.from({ length: 15 }, (_, index) => (2006 + index).toString());
 
   return (
-    <div className="bg-gray-100">
-      <div className="flex">
+    <div className="bg-gray-100 min-h-screen ">
+<div className="text-center mt-8">
+  <h1 className="text-4xl font-bold text-purple-700 dark:text-white">SpaceX Launch Programs</h1>
+</div>
+              
+      <div className="flex flex-col sm:flex-row  ">
         {/* Left-hand side for filters with a lightweight background */}
-        <div className="w-1/4 p-6 bg-gray-100 dark:bg-gray-900 lightweight-bg">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">SpaceX Launch Programs</h1>
+        {/* <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">SpaceX Launch Programs</h1> */}
 
-            <h1 className="text-2xl font-bold">Filters</h1>
-          <div className=" py-4 gap-3 mb-8">
-            <div> <h2 className="text-xl text-center font-semibold text-gray-800 dark:text-white py-2"> Launch Year</h2></div>
+        <div className=" sm:w-1/4 p-6 bg-gray-100 dark:bg-gray-900   ">
+         
+
+          <div className="py-4 gap-4 mb-8    grid place-items-center ">
+          <h1 className="text-2xl font-bold ">Filters</h1>
+
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white py-2">Launch Year</h2>
             <hr />
-            <div className="grid grid-cols-2 gap-2 m-12 mt-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-6 place-items-center  ">
               {years.map((year) => (
                 <button
                   key={year}
                   onClick={() => handleYearFilter(year)}
-                  className={`bg-[hsl(83,42%,44%)] hover:bg-[#008631] w-24 focus:ring-4 focus:ring-gray-300 text-gray-800 dark:bg-gray-700 dark:hover-bg-gray-600 dark:focus:ring-gray-700 text-sm font-medium rounded-lg px-2 py-2 ${
+                  className={`bg-[hsl(83,42%,44%)] hover:bg-[#008631] w-24 md:w-12 xl:w-24 focus:ring-4 focus:ring-gray-300 text-gray-800 dark:bg-gray-700 dark:hover-bg-gray-600 dark:focus:ring-gray-700 text-sm font-medium rounded-lg px-2 py-2 ${
                     selectedYear === year ? 'bg-[#00c04b] hover:bg-black-600 focus:ring-4 focus:ring-black-300 text-black' : ''
                   }`}
                 >
                   {year}
                 </button>
-             ) )}
+              ))}
             </div>
-          
-              <div className="">
-              <h2 className=" py-2 text-xl font-semibold text-gray-800 dark:text-white text-center">Successful Launch</h2>
-              <div className="content-center">
 
-             
-                <button
-                  onClick={() => handleFilter('launch', true)}
-                  className={`bg-green-400 hover:bg-green-500 focus:ring-4 focus:ring-green-300 text-white text-sm font-medium rounded-lg mx-4 px-4 py-2 ${
-                    successfulLaunch === true ? 'bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300' : ''
-                  }`}
-                >
-                  True
-                </button>
-                <button
-                  onClick={() => handleFilter('launch', false)}
-                  className={`bg-red-400 hover:bg-red-500 focus:ring-4 focus:ring-red-300 text-white text-sm font-medium rounded-lg  px-4 py-2 ${
-                    successfulLaunch === false ? 'bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300' : ''
-                  }`}
-                >
-                  False
-                </button>
-                </div>
-              </div>
-
-            <div className="">
-              <h2 className="text-xl py-2 font-semibold text-gray-800 dark:text-white text-center">Successful Landing</h2>
+            <h2 className="py-2 text-xl font-semibold text-gray-800 dark:text-white md:text-center">Successful Launch</h2>
+            <div className="content-center grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-6">
               
-              <div className="flex py-2">
-                <button
-                  onClick={() => handleFilter('landing', true)}
-                  className={`bg-green-400 hover:bg-green-500 focus:ring-4 focus:ring-green-300 text-white text-sm font-medium rounded-lg mx-4 px-4 py-2 ${
-                    successfulLanding === true ? 'bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300' : ''
+               <button
+                
+                  onClick={() =>handleFilter('launch', true)}
+                  className={`bg-[hsl(83,42%,44%)] hover:bg-[#008631] w-24 md:w-12 xl:w-24 focus:ring-4 focus:ring-gray-300 text-gray-800 dark:bg-gray-700 dark:hover-bg-gray-600 dark:focus:ring-gray-700 text-sm font-medium rounded-lg px-2 py-2 ${
+                    successfulLaunch === true ? 'bg-[#00c04b] hover:bg-black-600 focus:ring-4 focus:ring-black-300 text-black' : ''
                   }`}
                 >
                   True
                 </button>
                 <button
-                  onClick={() => handleFilter('landing', false)}
-                  className={`bg-red-400 hover-bg-red-500 focus:ring-4 focus:ring-red-300 text-white text-sm font-medium rounded-lg px-4 py-2 ${
-                    successfulLanding === false ? 'bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300' : ''
-                  }`}
-                >
-                  False
-                </button>
-              </div>
+                
+                onClick={() =>handleFilter('launch', false)}
+                className={`bg-[hsl(83,42%,44%)] hover:bg-[#008631] w-24 md:w-12 xl:w-24 focus:ring-4 focus:ring-gray-300 text-gray-800 dark:bg-gray-700 dark:hover-bg-gray-600 dark:focus:ring-gray-700 text-sm font-medium rounded-lg px-2 py-2 ${
+                  successfulLaunch === false ? 'bg-[#00c04b] hover:bg-black-600 focus:ring-4 focus:ring-black-300 text-black' : ''
+                }`}
+              >
+                False 
+              </button>
+            </div>
+
+            <h2 className="text-xl py-2 font-semibold text-gray-800 dark:text-white md:text-center">Successful Landing</h2>
+            {/* brorbr wala */}
+            <div className=" grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-6 place-items-center">
+              {/* <button
+                onClick={() => handleFilter('landing', true)}
+                className={`bg-green-400 hover:bg-green-500 focus:ring-4 focus:ring-green-300 text-white text-sm font-medium rounded-lg mx-4 px-4 py-2 ${
+                  successfulLanding === true ? 'bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300' : ''
+                }`}
+              >
+                True
+                
+              </button> */}
+                <button
+                
+                onClick={() =>handleFilter('launch', true)}
+                className={`bg-[hsl(83,42%,44%)] hover:bg-[#008631] w-24 md:w-12 xl:w-24 focus:ring-4 focus:ring-gray-300 text-gray-800 dark:bg-gray-700 dark:hover-bg-gray-600 dark:focus:ring-gray-700 text-sm font-medium rounded-lg px-2 py-2 ${
+                  successfulLanding === true ? 'bg-[#00c04b] hover:bg-black-600 focus:ring-4 focus:ring-black-300 text-black' : ''
+                }`}
+              >
+                True
+              </button>
+              <button
+                
+                onClick={() =>handleFilter('launch', true)}
+                className={`bg-[hsl(83,42%,44%)] hover:bg-[#008631] w-24  md:w-12 xl:w-24 focus:ring-4 focus:ring-gray-300 text-gray-800 dark:bg-gray-700 dark:hover-bg-gray-600 dark:focus:ring-gray-700 text-sm font-medium rounded-lg px-2 py-2 ${
+                  successfulLanding === false ? 'bg-[#00c04b] hover:bg-black-600 focus:ring-4 focus:ring-black-300 text-black' : ''
+                }`}
+              >
+                False
+              </button>
             </div>
 
             {/* Button to reset filters */}
             <button
               onClick={resetFilters}
-              className="bg-gray-400 hover:bg-gray-500 focus:ring-4 focus:ring-gray-300 text-white text-sm font-medium rounded-lg px-4 py-2"
+              className="bg-gray-400 hover:bg-gray-500 focus:ring-4  focus:ring-gray-300 text-white text-sm font-medium rounded-lg px-4 py-2"
             >
               Reset Filters
             </button>
@@ -178,11 +200,11 @@ function Home({ launches }: { launches: any }) {
         </div>
 
         {/* Right-hand side for cards */}
-        <div className="w-3/4 p-6">
+        <div className="w-full sm:w-3/4 p-6 ">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredLaunches.map((launch: any) => (
+            {filteredLaunches.map((launch:any) => (
               <LaunchCard key={launch.flight_number} launch={launch} />
-             ) )}
+            ))}
           </div>
         </div>
       </div>

@@ -1,0 +1,50 @@
+/* styles.css */
+
+/* Apply a global reset to remove default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Define the responsive layout for different screen sizes */
+  .container {
+    max-width: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+  
+  /* Define the left-hand side filter section */
+  .lightweight-bg {
+    background-color: #f9f9f9; /* Your desired background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-right: 1rem;
+  }
+  
+  /* Add your other CSS styles for the filter section, buttons, and other elements here */
+  
+  /* Define the right-hand side for cards */
+  /* You can add specific styles for the cards if needed */
+  
+  /* Define specific styles for different screen sizes using media queries */
+  @media (min-width: 700px) {
+    /* Tablet view styles */
+    .container {
+      max-width: 700px;
+    }
+  
+    /* Add additional styles for tablet view here */
+  }
+  
+  @media (min-width: 1024px) {
+    /* Desktop view styles */
+    .container {
+      max-width: 1024px;
+    }
+  
+    /* Add additional styles for desktop view here */
+  }
+  
