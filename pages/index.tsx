@@ -104,9 +104,9 @@ function Home({ launches }: { launches: any }) {
 
   return (
     <div className="bg-gray-100 min-h-screen ">
-<div className="text-center mt-8">
-  <h1 className="text-4xl font-bold text-purple-700 dark:text-white">SpaceX Launch Programs</h1>
-</div>
+        <div className="text-center mt-8">
+          <h1 className="text-4xl font-bold text-purple-700 dark:text-white">SpaceX Launch Programs</h1>
+        </div>
               
       <div className="flex flex-col sm:flex-row  ">
         {/* Left-hand side for filters with a lightweight background */}
@@ -208,6 +208,20 @@ function Home({ launches }: { launches: any }) {
           </div>
         </div>
       </div>
+      <div className="text-center font-bold">
+  <h6>Developed By Jiyan Patil</h6>
+  <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <a href="https://www.linkedin.com/in/jiyan-patil-8a85561a5/" target="_blank" rel="noopener noreferrer">
+      <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/linkedin.png" alt="LinkedIn" />
+      
+    </a>
+    <a href="https://github.com/jiyanpatil07" target="_blank" rel="noopener noreferrer">
+      <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/github.png" alt="LinkedIn" />
+      
+    </a>
+    
+  </div>
+</div>
     </div>
   );
 }
