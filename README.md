@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CarvoAI Internship Assignment
+
+Welcome to the CarvoAI Internship Assignment! This repository contains the code for the assignment, where you are required to use a provided API to implement a responsive website with year filters.
 
 ## Getting Started
 
-First, run the development server:
+To get started with the project, make sure you have Node.js installed. Then, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+1. Change your Next.js version to Next.js 13 specifically for this project.
+2. Run `npm install` to install the project's dependencies.
+3. Start the development server by running `npm run dev`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Description
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+This project is designed to be responsive, allowing you to view it on various devices such as laptops, tablets, and mobile phones.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Screenshots and Performance
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Here are screenshots of the project in action and its Lighthouse performance report:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Laptop View 🖥️
 
-## Learn More
+![Laptop View](![image](https://github.com/jiyanpatil07/cravoAI/assets/76421551/6dd4e9ae-fbcf-4671-a1c6-bde8a32f688b)
+)
 
-To learn more about Next.js, take a look at the following resources:
+#### Tablet View 📱
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Tablet View](![image](https://github.com/jiyanpatil07/cravoAI/assets/76421551/246d95b3-b0e7-4ca9-8b4c-35e58719a320)
+)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Mobile View 📱
 
-## Deploy on Vercel
+![Mobile View](![image](https://github.com/jiyanpatil07/cravoAI/assets/76421551/a29441a3-4329-48b1-910a-b1cb70a828fa)
+)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Lighthouse Performance Report 📊
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Lighthouse Report](link_to_lighthouse_report)
+
+### Deployment
+
+The project has been successfully deployed and is accessible at the following link:
+
+[Live Demo]([deployment_link](https://carvo-1651n3ems-jiyanpatil07.vercel.app/))
+
+Feel free to explore the deployed site and provide your valuable feedback!
+
+### Learn More
+
+For more information about Next.js, check out the [Next.js Documentation](https://nextjs.org/docs). You can also enhance your Next.js skills by following the [Learn Next.js tutorial](https://nextjs.org/learn).
+
+If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request. Your feedback and contributions are welcome!
+
+Thank you for your interest in the CarvoAI Internship Assignment. We hope you enjoy exploring the project! 🌟
