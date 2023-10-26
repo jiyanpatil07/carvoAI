@@ -20,28 +20,27 @@ Here are screenshots of the project in action and its Lighthouse performance rep
 
 #### Laptop View 🖥️
 
-![Laptop View](![image](https://github.com/jiyanpatil07/cravoAI/assets/76421551/6dd4e9ae-fbcf-4671-a1c6-bde8a32f688b)
-)
+![image](https://github.com/jiyanpatil07/cravoAI/assets/76421551/5e25d471-e057-4e16-90ed-789412f6260c)
+
 
 #### Tablet View 📱
 
-![Tablet View](![image](https://github.com/jiyanpatil07/cravoAI/assets/76421551/246d95b3-b0e7-4ca9-8b4c-35e58719a320)
+(![image](https://github.com/jiyanpatil07/cravoAI/assets/76421551/ae41067d-5888-48a9-ad9e-2a5ed168f1c3)
 )
 
 #### Mobile View 📱
+![WhatsApp Image 2023-10-26 at 22 56 33_d9e14611](https://github.com/jiyanpatil07/cravoAI/assets/76421551/43c63ee0-42eb-4c82-a6bc-be2912c8cfe9)
 
-![Mobile View](![image](https://github.com/jiyanpatil07/cravoAI/assets/76421551/a29441a3-4329-48b1-910a-b1cb70a828fa)
-)
 
 #### Lighthouse Performance Report 📊
 
-![Lighthouse Report](link_to_lighthouse_report)
+![Lighthouse Report](URL_TO_LIGHTHOUSE_REPORT)
 
 ### Deployment
 
 The project has been successfully deployed and is accessible at the following link:
 
-[Live Demo]([deployment_link](https://carvo-1651n3ems-jiyanpatil07.vercel.app/))
+[Live Demo](https://carvo-6jvxlw46h-jiyanpatil07.vercel.app/)
 
 Feel free to explore the deployed site and provide your valuable feedback!
 
