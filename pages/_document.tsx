@@ -5,8 +5,9 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
+     
           <link rel="stylesheet" href="/styles.css" /> {/* Reference the CSS file */}
         </Head>
         <body>

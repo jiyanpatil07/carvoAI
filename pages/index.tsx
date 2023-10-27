@@ -1,7 +1,9 @@
 import React from "react";
-import Image from 'next/image';
+import Image from 'next/image'
+import Link from "next/link";
 
 import { useRouter } from 'next/router';
+// import Link from "next/link";
 
 
 
@@ -22,22 +24,24 @@ export async function getServerSideProps() { //Server Side Rendering
 function LaunchCard({ launch }: { launch: any }) {
   return (
     <div className="max-w-md bg-white border border-gray-300 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-      <a href={launch.links.article_link} target="_blank" rel="noopener noreferrer">
-        <Image className="rounded-t-lg" 
-        width={400}
-        height={400}
-        loading="lazy"
-        src={launch.links.mission_patch} alt={launch.mission_name} />
-      </a>
+  
+  <a href={launch.links.article_link} target="_blank" rel="noopener noreferrer"/>
+    <Image className="rounded-t-lg" 
+      width={400}
+      height={400}
+      loading="lazy"
+      src={launch.links.mission_patch} alt={launch.mission_name} />
+  {/* </Link> */}
+
       <div className="p-4">
-        <a href={launch.links.article_link} target="_blank" rel="noopener noreferrer">
+        <a href={launch.links.article_link} target="_blank" rel="noopener noreferrer"/>
           <h5 className="mb-2 text-2xl font-bold text-purple-700 dark:text-white">
             {launch.mission_name} #{launch.flight_number}
           </h5>
-        </a>
+          {/* </Link> */}
 
         <p className="mb-1 text-gray-700 font-bold text-xl dark:text-gray-400">Mission IDs: </p>
-        <span><li> {launch.mission_id.join(", ")}</li></span>
+        <ul> <span><li> {launch.mission_id.join(", ")}</li></span></ul>
         <p className="mb-1 text-gray-700 font-bold text-xl dark:text-gray-400">Launch Year: {launch.launch_year}</p>
         <p className="mb-1 text-gray-700 font-bold text-xl dark:text-gray-400">
           Successful Launch: {launch.launch_success ? "Yes" : "No"}
@@ -48,6 +52,7 @@ function LaunchCard({ launch }: { launch: any }) {
           </p>
         )}
       </div>
+
     </div>
   );
 }
@@ -198,7 +203,7 @@ function Home({ launches }: { launches: any }) {
             {/* Button to reset filters */}
             <button
               onClick={resetFilters}
-              className="bg-gray-400 hover:bg-gray-500 focus:ring-4  focus:ring-gray-300 text-white text-sm font-medium rounded-lg px-4 py-2"
+              className="bg-[hsl(83,42%,44%)] hover:bg-[#008631] w-24  md:w-24 xl:w-36 lg:w-32 focus:ring-4 focus:ring-gray-300 text-gray-800 dark:bg-gray-700 dark:hover-bg-gray-600 dark:focus:ring-gray-700 text-sm font-medium rounded-lg px-2 py-2"
             >
               Reset Filters
             </button>
@@ -217,14 +222,16 @@ function Home({ launches }: { launches: any }) {
       <div className="text-center font-bold">
   <h6>Developed By Jiyan Patil</h6>
   <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-    <a href="https://www.linkedin.com/in/jiyan-patil-8a85561a5/" target="_blank" rel="noopener noreferrer">
+    <Link href="https://www.linkedin.com/in/jiyan-patil-8a85561a5/" target="_blank" rel="noopener noreferrer">
       <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/linkedin.png" alt="LinkedIn" />
       
-    </a>
-    <a href="https://github.com/jiyanpatil07" target="_blank" rel="noopener noreferrer">
+    {/* </a> */}
+    </Link>
+    <Link href="https://github.com/jiyanpatil07" target="_blank" rel="noopener noreferrer">
       <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/github.png" alt="LinkedIn" />
       
-    </a>
+    {/* </a> */}
+    </Link>
     
   </div>
 </div>
