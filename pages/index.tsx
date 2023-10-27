@@ -1,4 +1,6 @@
 import React from "react";
+import Image from 'next/image';
+
 import { useRouter } from 'next/router';
 
 
@@ -21,7 +23,11 @@ function LaunchCard({ launch }: { launch: any }) {
   return (
     <div className="max-w-md bg-white border border-gray-300 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
       <a href={launch.links.article_link} target="_blank" rel="noopener noreferrer">
-        <img className="rounded-t-lg" src={launch.links.mission_patch} alt={launch.mission_name} />
+        <Image className="rounded-t-lg" 
+        width={400}
+        height={400}
+        loading="lazy"
+        src={launch.links.mission_patch} alt={launch.mission_name} />
       </a>
       <div className="p-4">
         <a href={launch.links.article_link} target="_blank" rel="noopener noreferrer">
