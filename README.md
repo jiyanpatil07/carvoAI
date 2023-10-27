@@ -30,7 +30,7 @@ Prepare to be awed by the screenshots capturing the essence of the project and a
 ![Mobile View](https://github.com/jiyanpatil07/cravoAI/assets/76421551/43c63ee0-42eb-4c82-a6bc-be2912c8cfe9)
 
 #### Lighthouse Performance Report 📊
-![Lighthouse Report](URL_TO_LIGHTHOUSE_REPORT)
+[LightHouse Report](https://github.com/jiyanpatil07/cravoAI/blob/main/LightHouseReport.pdf) 🌐
 
 ### Deployment 🚢
 
