@@ -23,12 +23,12 @@ export async function getServerSideProps() { //Server Side Rendering
 
 function LaunchCard({ launch }: { launch: any }) {
   return (
-    <div className="max-w-md bg-white border border-gray-300 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-  
+    <div className="max-w-sm bg-white border border-gray-300 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
+
   <a href={launch.links.article_link} target="_blank" rel="noopener noreferrer"/>
-    <Image className="rounded-t-lg" 
-      width={400}
-      height={400}
+    <Image className="rounded-t-lg"
+      width={300}
+      height={300}
       loading="lazy"
       src={launch.links.mission_patch} alt={launch.mission_name} />
   {/* </Link> */}
@@ -212,7 +212,7 @@ function Home({ launches }: { launches: any }) {
 
         {/* Right-hand side for cards */}
         <div className="w-full sm:w-3/4 p-6 ">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredLaunches.map((launch:any) => (
               <LaunchCard key={launch.flight_number} launch={launch} />
             ))}
